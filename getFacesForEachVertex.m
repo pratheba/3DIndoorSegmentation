@@ -1,5 +1,5 @@
 function [faceVertices, indexfacevertex] = getFacesForEachVertex(vertices, faces)
-    
+     
 	faceVertices = containers.Map('KeyType','int32','ValueType','any');
     indexfacevertex = containers.Map('KeyType', 'int32', 'ValueType','any');
 	[row col] = size(faces);

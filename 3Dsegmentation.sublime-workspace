@@ -1,0 +1,336 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fa",
+				"faces"
+			],
+			[
+				"face",
+				"faces"
+			],
+			[
+				"id",
+				"isVisited"
+			],
+			[
+				"max",
+				"maxVertexId"
+			],
+			[
+				"ve",
+				"vertexnormals"
+			],
+			[
+				"tria",
+				"triangulatedVertex"
+			],
+			[
+				"dire",
+				"dir_name"
+			],
+			[
+				"di",
+				"dir_name"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "3Dsegmentation.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/3DSegmentation",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/displayNormals.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/computeVertexAndFaceNormalAndDisplay.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/adjacencyMatrix2List.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/meshRegionGrowing.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/getFacesForEachVertex.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/colored.ply",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/loadandreadmesh.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/startProcess.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/sphere.ply",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/test.ply",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/edgeDetection.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/colored-reductionmesh.ply",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/GetGlobalClusterGroup.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/SetGlobalClusterGroup.m",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/Matlab/computeVertexNormalAndDisplay.m",
+		"/Users/prathebaselvaraju/Downloads/colored.ply",
+		"/Users/prathebaselvaraju/4-Projects/3DSegmentation/RoomPOintCloud.ply",
+		"/Users/prathebaselvaraju/4-Projects/IES/crawler.py",
+		"/Users/prathebaselvaraju/4-Projects/IES/Input/Commercial_Downlighting/Housings/LDN6_Series/Circular/Direct/LDN6_27_15_LO6AR.ies",
+		"/Users/prathebaselvaraju/4-Projects/IES/Input/Commercial_&_Industrial_Fluorescent/Recessed/ACL/Rectangle/Direct/2ACL2_20L_MVOLT_EZ1_LP830.ies",
+		"/Users/prathebaselvaraju/4-Projects/IES/Input/Commercial_&_Industrial_Fluorescent/Recessed/ES8R/Rectangle/Direct/2ES8R_2U31_BINP.ies",
+		"/Users/prathebaselvaraju/3-Installation/pbrt-v3/pbrt-scenes/geometry/villa-mat.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-room/material.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-room/mainscene.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-room/scene.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-room/scene0000.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/to edward-roomply/material.pbrt",
+		"/Users/prathebaselvaraju/3-Installation/pbrt-v3/pbrt-v3-scenes/subusrface-spheres/spheres.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-roomlit/scene.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-roomlit/roommodels.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/toedward-roomlit/material.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/to edward/material.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/canvas.ply",
+		"/Users/prathebaselvaraju/4-Projects/Room models/Geometry/CanvasVert.ply",
+		"/Users/prathebaselvaraju/4-Projects/to edward/Geometry/CanvasVert.ply",
+		"/Users/prathebaselvaraju/4-Projects/to edward/roommodels.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/to edward/room.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/exp2.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/exp1.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/exp.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/br0742.pbrt",
+		"/Users/prathebaselvaraju/3-Installation/pbrt-v3/pbrt-v3-scenes/caustic-glass/glass.pbrt",
+		"/Users/prathebaselvaraju/3-Installation/pbrt-v3/pbrt-v3-scenes/bunny-fur/bunnymesh.pbrt",
+		"/Users/prathebaselvaraju/3-Installation/pbrt-v3/pbrt-v3-scenes/bunny-fur/bunnyfur.pbrt",
+		"/Users/prathebaselvaraju/3-Installation/pbrt-v3/pbrt-v3-scenes/bunny-fur/bunny.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/MakeMaterial.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/br.pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/revised.pbrt",
+		"/Users/prathebaselvaraju/Downloads/br (1).pbrt",
+		"/Users/prathebaselvaraju/4-Projects/Room models/bookshelfwithoutbooks.ply",
+		"/Users/prathebaselvaraju/Downloads/br.pbrt",
+		"/Users/prathebaselvaraju/1-Personal/Resume/PrathebaSelvaraju_Game.tex",
+		"/Volumes/My Passport/Lenova-CarbonX11-Backup/Documents/Resume/PrathebaSelvaraju_Game-reduced.tex",
+		"/Volumes/My Passport/Lenova-CarbonX11-Backup/Documents/Resume/PrathebaSelvaraju_Game.tex",
+		"/Volumes/My Passport/Lenova-CarbonX11-Backup/Documents/Resume/resume.cls",
+		"/Volumes/My Passport/Lenova-CarbonX11-Backup/Documents/Resume/resume.tex",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/SpericalRadius-DiffR-SameI/SpericalRadius-DiffR.lxs",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/SpericalRadius-DiffR-SameI/SpericalRadius-DiffR/Scene/00250/LuxRender-Geometry.lxo",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/SpericalRadius-DiffR-SameI/SpericalRadius-DiffR.py",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/SameR-DiffI-SameP-SameC/SameR-DiffI-SameP-SameC-100/Scene/00250/LuxRender-Geometry.lxo",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/SameR-DiffI-SameP-SameC/SameR-DiffI-SameP-SameC-100.lxs",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/Light-gray-intensity100-gamma1/light-gray-intensity100-gamma1.lxs",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Archis/Input/Light-gray-intensity100-gamma1/light-gray-intensity100-gamma1.lxs",
+		"/Users/prathebaselvaraju/4-Projects/Test/build/Test.build/Debug/Test.build/Objects-normal/x86_64/Test.LinkFileList",
+		"/Users/prathebaselvaraju/Desktop/light-xyz-gray.lxs",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/light-xyz-gray/light-xyz-gray.lxs",
+		"/Users/prathebaselvaraju/Desktop/untitled.py",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/light-xyz-gray/light-xyz-gray.py",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/light-xyz-gray/light-xyz-gray.ply",
+		"/Users/prathebaselvaraju/4-Projects/Archis/Input/light-xyz-gray/Scene/00001/LuxRender-Geometry.lxo",
+		"/Users/prathebaselvaraju/4-Projects/LightParamterEstimation/input-output/light-xyz.lxs",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/lux/core/context.cpp",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/lux/cmake/Dependencies.cmake",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/lux/CMakeLists.txt",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/lux/config.h.cmake",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/Configuration.cmake",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/samples/smallluxgpu4/smallluxgpu.cpp",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/samples/smallluxgpu4/smallluxgpu.h",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-lux/cmake/liblux.cmake",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-lux/CMakeLists.txt",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/samples/smallluxgpu4/CMakeLists.txt",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/include/luxcore/luxcore.h",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/samples/luxcorescenedemo/luxcorescenedemo.cpp",
+		"/Users/prathebaselvaraju/3-Installation/Luxrender/luxrender-luxrays/samples/benchsimple/benchsimple.cpp",
+		"/Users/prathebaselvaraju/4-Projects/LightParamterEstimation/input-output/light-xyz-boundingbox.ply",
+		"/Users/prathebaselvaraju/4-Projects/LightParamterEstimation/input-output/light-xyz.ply",
+		"/Users/prathebaselvaraju/Desktop/light-test1.lxs",
+		"/Users/prathebaselvaraju/Desktop/test.lxs"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"incenterofTriangles",
+			"CoffeeCupCeramicmaterial",
+			"coffeetableglassmaterial",
+			"spotlight",
+			"luxLightSource",
+			"Dependencies",
+			"boost",
+			"scene",
+			"unexported_symbols.map",
+			"unsupported_",
+			"scene"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "3Dsegmentation.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "3Dsegmentation.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 337.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

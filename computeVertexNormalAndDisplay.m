@@ -4,5 +4,5 @@ function [triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFace
 	vertexnormals      = vertexNormal(triangulatedVertex);
 	facenormals        = faceNormal(triangulatedVertex);
 
-	displayNormals(triangulatedVertex, faces, vertex, vertexnormals, facenormals);
+	%displayNormals(triangulatedVertex, faces, vertex, vertexnormals, facenormals);
 end
