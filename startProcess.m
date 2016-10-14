@@ -1,93 +1,89 @@
 function [] = startProcess(vertex, faces)
         [faceVertices, indexfaces] = getFacesForEachVertex(vertex, faces);
-%         r = randi(1000,1,1000);
-%         r = r';
-        
+
 		[triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFaceNormalAndDisplay(vertex, faces);
 		adjacencyMatrix = triangulation2adjacency(faces,vertex);
-        %adjacencyMatrix = triangulation2adjacency(faces(r,:),vertex(r,:));
-		
 		adjacencyList = adjacencyMatrix2List(adjacencyMatrix);
     
         numVertices = length(adjacencyList');
         isVisited = zeros(1, numVertices);
         clusterNumber = 0;
         colorInformation = zeros(length(faces),3);
-        %SetIsVisited(isVisited);
+        faceindexesforblack = [];
         figure();
-        %trisurf(triangulatedVertex, 'FaceColor', [0.8 0.8 1.0]);
-        %axis equal;
-        %hold on;
+        blackFaces = [];
         for i = 1: numVertices
-            %isVisited = GetIsVisited();
-            if(~isVisited(i))
+
+                if(~isVisited(i))
                 clusterNumber = clusterNumber+1;
-               % SetGlobalClusterGroup(i);
+            
                 clusterVertices = i;
                 uVector = vertexnormals(i,:)';
-                [clusterVertices, isVisited] = meshRegionGrowing(adjacencyList, vertexnormals, i, isVisited, clusterVertices, vertexnormals(i,:)');
+                [clusterVertices, isVisited] = meshRegionGrowing(adjacencyList, vertexnormals, i, isVisited, clusterVertices, uVector);
           
                 [numberOfClusterVertices, finalClusterVertices, isVisited] = CheckForValidityoftheComponent(clusterVertices, isVisited, adjacencyList, vertexnormals);
-%                 for k=1:length(clusterVertices)
-%                     disp(vertexnormals(clusterVertices(k),:));
-%                 end;
-                %disp(strcat('cluster seed',num2str(i),':'));
-                %clustergroup = GetGlobalClusterGroup();
-                %clustergroup = unique(clustergroup);
-                %figure();
                 valueSet = values(faceVertices,num2cell(finalClusterVertices));
                 clustergroupfaces=[];
-                for v=1:length(valueSet)
-                    clustergroupfaces = [clustergroupfaces; valueSet{v}];
-                end
-                %TR = triangulation(clustergroupfaces,vertex(clustergroupfaces));%(:,1)), vertex(clustergroupfaces(:,2)), vertex(clustergroupfaces(:,3)));
-               % disp(clustergroupfaces(1,:));
-%                 vertex1 = clustergroupfaces(:,1);
-%                 disp(vertex(vertex1(1),:));
-%                 disp(vertex(vertex1(2,:)));
-%                 DT = delaunayTriangulation(vertex(clustergroupfaces(:,1)),vertex(clustergroupfaces(:,2)),vertex(clustergroupfaces(:,3)));
-%                 hullFacets = convexHull(DT);
-%                 
-%                 modify_cm = colormap('winter');
-%                 trisurf(hullFacets, DT.Points(:,1), DT.Points(:,2), DT.Points(:,3))
-% 
-%                 % Use the entirely custom color mapping
-%                 colormap(modify_cm)
 
-
-                %patch('Vertices', vertex, 'Faces', clustergroupfaces, 'FaceColor','flat','EdgeColor','flat', 'Marker','o','MarkerFaceColor','flat');
                 c = rand(1,3);
-                tri = triangulation(clustergroupfaces, vertex);
-                
-                clustergroupfaces=[];
-                faceindexValueset = values(indexfaces,num2cell(finalClusterVertices));
-                for v=1:length(faceindexValueset)
-                    clustergroupfaces = [clustergroupfaces; faceindexValueset{v}];
-                end
-                for k=1:length(clustergroupfaces)
-                    %index = values(indexfaces,num2cell(clusterVertices(k)));
-                    colorInformation(clustergroupfaces(k),:) = ceil(255*c(:));
+                for v=1:length(valueSet)
+                    count = 0;
+                    for index=1:length(valueSet{v})
+                        for j=1:3
+                            if(ismember(valueSet{v}(index,j),finalClusterVertices))
+                                count = count +1;
+                            end
+                        end
+                    clustergroupfaces = [clustergroupfaces; valueSet{v}];
+                    faceindexValueset = values(indexfaces,num2cell(valueSet{v}(index,j)));
+                    faceindexValueset = cell2mat(faceindexValueset);
+                    if( count < 2)
+                         %faceindexesforblack = [faceindexesforblack ; faceindexValueset];
+                         blackFaces = [blackFaces; faces(faceindexValueset,:)];
+                        %colorInformation(faceindexValueset,:)= AssignValue(colorInformation(faceindexValueset,:), [0 0 0]);
+                         %colorInformation(faceindexValueset,:) = [0 0 0];
+                    else
+                         %faceindexesforblack = [faceindexesforblack ; faceindexValueset];
+                         %blackFaces = [blackFaces; faces(faceindexValueset,:)];
+                         %colorInformation(faceindexValueset,:) = ceil(255*c(:));
+                        %colorInformation(faceindexValueset,:)= AssignValue(colorInformation(faceindexValueset,:), ceil(255*c(:)));
+                    end
+                    count = 0;
+                    end
                 end
 
-               % colorInformation(clustergroupfaces,:) = ceil(255*c(:));
                 
+                %if(length(clustergroupfaces) > 0)
+                tri = triangulation(clustergroupfaces, vertex);
+                %end
+                
+                %clustergroupfaces=[];
+                %faceindexValueset = values(indexfaces,num2cell(finalClusterVertices));
+                %faceindexValueset = cell2mat(faceindexValueset);
+                %clustergroupfaces = faceindexValueset;
+                %colorInformation(faceindexValueset) = ceil(255*c(:));
+                %for v=1:length(faceindexValueset)
+                    %clustergroupfaces = [clustergroupfaces; faceindexValueset{v}];
+                    %colorInformation(faceindexValueset{v},:) = ceil(255*c(:));
+  %                  disp(facenormals(clustergroupfaces(:),:));
+                %end
 %                 for k=1:length(clustergroupfaces)
-%                     index = values(indexfaces,num2cell(clusterVertices(k)));
-%                     colorInformation(index{1},:) = ceil(255*c(:));
+%                     colorInformation(clustergroupfaces(k),:) = ceil(255*c(:));
 %                 end
-                h = trisurf(tri, 'FaceColor', c);%, vertex(clustergroupfaces(:,1)), vertex(clustergroupfaces(:,2)), vertex(clustergroupfaces(:,3)),'FaceColor',[1.0 0.0 0.0]);
+                %colorInformation(faceindexesforblack) = [0 0 0]
+%                 for k=1:length(faceindexesforblack)
+%                     colorInformation(faceindexesforblack(k),:) = [0 0 0];
+%                     blackFaces = [blackFaces; faces(faceindexesforblack(k),:)];
+%                 end
+
+                h = trisurf(tri, 'FaceColor', c);
                 axis equal;
                 hold on;
-                %facesForVertices = faceVertices(clustergroup);
-                %trimesh(valueSet, vertex(clustergroup,1), vertex(clustergroup,2), vertex(clustergroup,3), [1.0 0 0]);
-                
-                %surface(vertex(clustergroup,1),vertex(clustergroup,2),vertex(clustergroup,3));
-                %view(3);
-                %patch(vertex(clustergroup,1),vertex(clustergroup,2),vertex(clustergroup,3),'EdgeColor','interp','Marker','o','MarkerFaceColor','flat');
-                %colorbar;
             end
-            %disp(clustergroup);
         end
         hold off;
-        write_ply(vertex,faces,colorInformation, 'test.ply');
+        
+        blackFaces = unique(blackFaces,'rows');
+        backcolorfaces = zeros(length(blackFaces),3);
+        write_ply(vertex,blackFaces,backcolorfaces, 'test.ply');
 end

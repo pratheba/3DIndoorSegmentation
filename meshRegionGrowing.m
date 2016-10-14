@@ -1,6 +1,6 @@
 function [clusterVertices, isVisited] = meshRegionGrowing(adjacencyList, vertexNormals, startindex, isVisited, clusterVertices, uVector)
 
-    smoothnessThresholdinDegree = 5;
+    smoothnessThresholdinDegree = 10;
     %isVisited = GetIsVisited();
     if(~isVisited(startindex))
         isVisited(startindex) = 1;
