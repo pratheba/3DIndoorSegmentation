@@ -38,44 +38,13 @@ function [] = startProcess(vertex, faces)
                     faceindexValueset = values(indexfaces,num2cell(valueSet{v}(index,j)));
                     faceindexValueset = cell2mat(faceindexValueset);
                     if( count < 2)
-                         %faceindexesforblack = [faceindexesforblack ; faceindexValueset];
-                         blackFaces = [blackFaces; faces(faceindexValueset,:)];
-                        %colorInformation(faceindexValueset,:)= AssignValue(colorInformation(faceindexValueset,:), [0 0 0]);
-                         %colorInformation(faceindexValueset,:) = [0 0 0];
-                    else
-                         %faceindexesforblack = [faceindexesforblack ; faceindexValueset];
-                         %blackFaces = [blackFaces; faces(faceindexValueset,:)];
-                         %colorInformation(faceindexValueset,:) = ceil(255*c(:));
-                        %colorInformation(faceindexValueset,:)= AssignValue(colorInformation(faceindexValueset,:), ceil(255*c(:)));
+                        blackFaces = [blackFaces; faces(faceindexValueset,:)];
                     end
                     count = 0;
                     end
                 end
 
-                
-                %if(length(clustergroupfaces) > 0)
-                tri = triangulation(clustergroupfaces, vertex);
-                %end
-                
-                %clustergroupfaces=[];
-                %faceindexValueset = values(indexfaces,num2cell(finalClusterVertices));
-                %faceindexValueset = cell2mat(faceindexValueset);
-                %clustergroupfaces = faceindexValueset;
-                %colorInformation(faceindexValueset) = ceil(255*c(:));
-                %for v=1:length(faceindexValueset)
-                    %clustergroupfaces = [clustergroupfaces; faceindexValueset{v}];
-                    %colorInformation(faceindexValueset{v},:) = ceil(255*c(:));
-  %                  disp(facenormals(clustergroupfaces(:),:));
-                %end
-%                 for k=1:length(clustergroupfaces)
-%                     colorInformation(clustergroupfaces(k),:) = ceil(255*c(:));
-%                 end
-                %colorInformation(faceindexesforblack) = [0 0 0]
-%                 for k=1:length(faceindexesforblack)
-%                     colorInformation(faceindexesforblack(k),:) = [0 0 0];
-%                     blackFaces = [blackFaces; faces(faceindexesforblack(k),:)];
-%                 end
-
+                tri = triangulation(clustergroupfaces, vertex); 
                 h = trisurf(tri, 'FaceColor', c);
                 axis equal;
                 hold on;
