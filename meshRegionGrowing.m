@@ -1,11 +1,12 @@
 function [clusterVertices, isVisited] = meshRegionGrowing(adjacencyList, vertexNormals, startindex, isVisited, clusterVertices, uVector)
 
     smoothnessThresholdinDegree = 10;
+    nuVector = uVector / norm(uVector);
     %isVisited = GetIsVisited();
     if(~isVisited(startindex))
         isVisited(startindex) = 1;
         %SetIsVisited(isVisited);
-       % uVector = vertexNormals(startindex,:)';
+        % uVector = vertexNormals(startindex,:)';
         %disp(adjacencyList{startindex});
         neighbourVertices  = adjacencyList{startindex};
 
@@ -13,8 +14,11 @@ function [clusterVertices, isVisited] = meshRegionGrowing(adjacencyList, vertexN
             %isVisited = GetIsVisited();
             if(~isVisited(neighbourVertices(j)))
                 vVector = vertexNormals(neighbourVertices(j),:)';
-                %ThetaInDegrees = atan2d(norm(cross(uVector, vVector)), dot(uVector, vVector));
-                ThetaInDegrees = atan2d( cross(uVector, vVector) , dot(uVector, vVector) );
+                nvVector = vVector/norm(vVector);
+              
+                %ThetaInDegrees = atan2d(cross(uVector, vVector)), dot(uVector, vVector));
+                ThetaInDegrees1 = atan2d( cross(uVector, vVector) , dot(uVector, vVector) );
+                ThetaInDegrees = acos(dot(uVector, vVector),;
                 if(ThetaInDegrees < smoothnessThresholdinDegree)
                     %clusterVertices = GetGlobalClusterGroup();
                     clusterVertices = [clusterVertices neighbourVertices(j)];

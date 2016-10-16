@@ -1,5 +1,5 @@
 function [] = startProcess(vertex, faces)
-        [faceVertices, indexfaces] = getFacesForEachVertex(vertex, faces);
+        [faceVertices, faceindexforvertex] = getFacesForEachVertex(vertex, faces);
 
 		[triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFaceNormalAndDisplay(vertex, faces);
 		adjacencyMatrix = triangulation2adjacency(faces,vertex);
@@ -8,10 +8,10 @@ function [] = startProcess(vertex, faces)
         numVertices = length(adjacencyList');
         isVisited = zeros(1, numVertices);
         clusterNumber = 0;
-        colorInformation = zeros(length(faces),3);
-        faceindexesforblack = [];
+    
         figure();
         blackFaces = [];
+        blackFaceIndex = [];
         for i = 1: numVertices
 
                 if(~isVisited(i))
@@ -35,10 +35,11 @@ function [] = startProcess(vertex, faces)
                             end
                         end
                     clustergroupfaces = [clustergroupfaces; valueSet{v}];
-                    faceindexValueset = values(indexfaces,num2cell(valueSet{v}(index,j)));
+                    faceindexValueset = values(faceindexforvertex,num2cell(valueSet{v}(index,j)));
                     faceindexValueset = cell2mat(faceindexValueset);
                     if( count < 2)
                         blackFaces = [blackFaces; faces(faceindexValueset,:)];
+                        blackFaceIndex = [blackFaceIndex; faceindexValueset];
                     end
                     count = 0;
                     end
@@ -53,6 +54,10 @@ function [] = startProcess(vertex, faces)
         hold off;
         
         blackFaces = unique(blackFaces,'rows');
+        blackFaceIndex = unique(blackFaceIndex, 'rows');
         backcolorfaces = zeros(length(blackFaces),3);
+        
         write_ply(vertex,blackFaces,backcolorfaces, 'test.ply');
+        convexConnectivity(blackFaceIndex, faces, vertex, vertexnormals, facenormals, faceindexforvertex)
+
 end
