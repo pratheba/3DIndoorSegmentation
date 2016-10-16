@@ -12,4 +12,8 @@ function [centroid, x_centroid, y_centroid, z_centroid] = GetCentroidForTriangle
             field3 = 'z_centroid' ; value3 = z_centroid;
 
             centroid = struct(field1,value1, field2,value2, field3, value3);
+
+            % MATLAB 2016R
+            % TR = triangulation(faces,vertices);
+            % [IC, radii] = incenter(TR,:)
 end

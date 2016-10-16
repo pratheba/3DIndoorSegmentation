@@ -1,11 +1,9 @@
-function [triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFaceNormalAndDisplay(vertex, faces)
+function [triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFaceNormalAndDisplay(vertices, faces)
 
-	triangulatedVertex = triangulation(faces, vertex);
-	vertexnormals = vertexNormal(triangulatedVertex);
-
+           [triangulatedVertex, vertexnormals, facenormals] = ComputeVertexAndFaceNormal(vertices,faces);
+	
 	incenterofTriangles = incenter(triangulatedVertex);
-	facenormals        = faceNormal(triangulatedVertex);
-
-	displayNormals(triangulatedVertex, vertex, vertexnormals, incenterofTriangles, facenormals);
+	
+	displayNormals(triangulatedVertex, vertices, vertexnormals, incenterofTriangles, facenormals);
 
 end
