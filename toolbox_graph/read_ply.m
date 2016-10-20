@@ -13,7 +13,7 @@ function [vertex,face] = read_ply(filename)
 
 [d,c] = plyread(filename);
 
-vi = d.face.vertex_indices;
+vi = d.face.vertex_indices;%d.face.vertex_index; 
 nf = length(vi);
 face = zeros(nf,3);
 for i=1:nf

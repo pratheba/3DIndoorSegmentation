@@ -1,6 +1,6 @@
-function [triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFaceNormalAndDisplay(vertices, faces)
+function [triangulatedVertex, vertexnormals, facenormals] = computeVertexAndFaceNormalAndDisplay(faces,vertices)
 
-           [triangulatedVertex, vertexnormals, facenormals] = ComputeVertexAndFaceNormal(vertices,faces);
+           [triangulatedVertex, vertexnormals, facenormals] = ComputeVertexAndFaceNormal(faces,vertices);
 	
 	incenterofTriangles = incenter(triangulatedVertex);
 	

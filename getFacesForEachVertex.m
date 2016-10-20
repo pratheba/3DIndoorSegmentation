@@ -1,7 +1,7 @@
 function faceIndexForEachVertex = GetFacesForEachVertex(faces)
     faceIndexForEachVertex = containers.Map('KeyType', 'int32', 'ValueType','any');
-     [row col] = size(faces);
-
+    [row col] = size(faces);
+        
      for r=1:row
         for c=1:3
             if(isKey(faceIndexForEachVertex,faces(r,c)))

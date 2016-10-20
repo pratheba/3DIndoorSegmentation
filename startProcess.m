@@ -1,14 +1,20 @@
 function [] = startProcess(vertices, faces)
 
    faceIndexForEachVertex = GetFacesForEachVertex(faces);
-   
+%    faceindexValueset = values(faceIndexForEachVertex,num2cell(1));
+%    disp(faceindexValueset);
     % The adjacencyListForFaces is a cell Array
-    adjacencyListForFaces = GetFaceAdjacencyList(faces,faceIndexForEachVertex);
+    adjacencyListForFaces = GetFaceAdjacencyList(faces,vertices, faceIndexForEachVertex);
     
     %% If you want a cluster as struct then uncomment this
     %clusters = GetClustersBasedOnTraingulatedFaces(faces,vertices, adjacencyListForFaces);
     [clusterNumberValue, colorInformationValue] = GetClustersBasedOnTraingulatedFaces(faces,vertices, adjacencyListForFaces);
      write_ply(vertices,faces,colorInformationValue, 'test.ply');
+    % write_ply(vertices,faces,colorInformationValue, 'test.stl');
+%      model = createpde();
+%      geometryFromMesh(model,vertices',faces');%TR.ConnectivityList',TR.Points);
+%      generateMesh(model);
+%      pdeplot3D(model);%,'FaceLabels','on','FaceAlpha',0.5)
 end
 
 
