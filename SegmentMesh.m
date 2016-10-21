@@ -4,6 +4,6 @@ function [] = SegmentMesh
     addpath('toolbox_graph');
     addpath('gaimc');
     
-    SetGlobalClusterGroupSize(20);
+    SetGlobalClusterGroupSize(40);
     loadandreadmesh(filename);
 end

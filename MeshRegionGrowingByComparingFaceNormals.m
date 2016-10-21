@@ -10,17 +10,11 @@ function [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals
             if(~isVisitedFace(neighbourFaces(i)))
                 neigh_facenormal = faceNormals(neighbourFaces(i),:);
              
-                %isFacesConvexilyConnected = CheckIfConvexConnected(centroid(currentfaceindex,:), centroid(neighbourFaces(i),:), curr_facenormal, neigh_facenormal);
                 angle1 = atan2d(norm(cross(curr_facenormal,neigh_facenormal)),dot(curr_facenormal,neigh_facenormal));
-                
-                %if(isFacesConvexilyConnected)
                 if(angle1 <= 5)
                     clusterFaces = [ clusterFaces; neighbourFaces(i)];
-
                      if(GetShouldTakeAverageNormal)
                         curr_facenormal = mean(faceNormals(clusterFaces,:));
-                        %curr_facenormal = mean([curr_facenormal'; neigh_facenormal]);
-                        %curr_facenormal = curr_facenormal';
                      end
 
                     [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals(faces, adjacencyListForFaces, neighbourFaces(i), curr_facenormal, isVisitedFace, faceNormals, centroid,clusterFaces);
@@ -30,9 +24,6 @@ function [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals
                      if(isFacesConvexilyConnected)
                          clusterFaces = [ clusterFaces; neighbourFaces(i)];
                          curr_facenormal = neigh_facenormal;
-%                           if(GetShouldTakeAverageNormal)
-%                               curr_facenormal = mean(faceNormals(clusterFaces,:));
-%                           end
                          [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals(faces, adjacencyListForFaces, neighbourFaces(i), curr_facenormal, isVisitedFace, faceNormals, centroid,clusterFaces);
                      else
                          disp('face not convex connected');
