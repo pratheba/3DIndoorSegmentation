@@ -14,7 +14,7 @@ function isConvexConnected = CheckIfConvexConnected(curr_centroid, neigh_centroi
         
         angleDiff = ((angleFromCurrToDiff) - (angleFromNeighToDiff));
         
-        if(angleDiff >= 0)
+        if((angleDiff >= 0) && (dot(neigh_facenormal,vectorFromCurrentToNeigh)>0))
             isConvexConnected = 1;
         else
             isConvexConnected = 0;

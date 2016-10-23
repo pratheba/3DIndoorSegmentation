@@ -8,5 +8,8 @@ function value = GetGlobalValues(field)
     elseif(strcmpi(field,'clusterGroupSize'))
         global clusterGroupSize;
         value = clusterGroupSize;
+    elseif(strcmpi(field,'minDistance'))
+        global minDistance;
+        value = minDistance;
     end
 end

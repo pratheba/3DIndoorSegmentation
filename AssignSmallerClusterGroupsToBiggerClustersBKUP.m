@@ -6,11 +6,11 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
     isNeighbourToBiggerClusterGroup = zeros(numOfSmallClusters,1);
     
     loopcount = 0;
-    while(1)
-        if((loopcount > 10) || (isempty(find(isNeighbourToBiggerClusterGroup == 0,1))))
-            break;
-        end
-        loopcount = loopcount + 1;
+%     while(1)
+%         if((loopcount > 10) || (isempty(find(isNeighbourToBiggerClusterGroup == 0,1))))
+%             break;
+%         end
+%         loopcount = loopcount + 1;
     %% Get the small group clusters whose neighbour belongs to a larger group and continue from then on
     for s_index = 1: numOfSmallClusters % For each small Cluster
         finalClusterNumber = [];
@@ -24,9 +24,6 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
 
         for fs_index = 1: length(currSmallGroupFaceNumbers) % For each face in a single cluster
             currfaceNumber = currSmallGroupFaceNumbers(fs_index);
-            if(currfaceNumber == 6033)
-                disp('now');
-            end
             neighbourFaces = adjacencyListForFaces{currfaceNumber}; % Get the neighbouring faces
             
             tempNeighfaces = [];
@@ -34,12 +31,10 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
             neighbourFaceClusterNumber = cell(length(neighbourFaces));
             
             for neigh_index = 1:length(neighbourFaces)
-                tempNeighbourFacesClusterNumber = setdiff(mapFaceToCluster(neighbourFaces(neigh_index)),smallGroupSizeCluster); % get rid off small cluster groups from neighfaces
-                
-                if(~isempty(tempNeighbourFacesClusterNumber))
+                if(mapFaceToCluster(neighbourFaces(neigh_index)) ~= smallGroupSizeCluster(s_index))
                     isNeighbourToBiggerClusterGroup(s_index) = 1;
                     tempNeighfaces = [tempNeighfaces; neighbourFaces(neigh_index)];
-                    neighbourFaceClusterNumber{neigh_index} = tempNeighbourFacesClusterNumber;
+                    neighbourFaceClusterNumber{neigh_index} = mapFaceToCluster(neighbourFaces(neigh_index));
                     neighbourFaceNormalAverage{neigh_index} = faceNormals(neighbourFaces(neigh_index),:);
                 end
             end
@@ -57,7 +52,7 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
             finalClusterNumber = cell2mat(finalClusterNumber);
             finalFaceNormal = cell2mat(finalFaceNormal);
 
-            angleDiff = 360;
+            angleDiff = 10;
             whichClusterNumber = smallGroupSizeCluster(s_index);
            
             curr_AvgfacenormalOfSmallCluster = faceNormals(currSmallGroupFaceNumbers(1),:);
@@ -121,6 +116,6 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
 %     smallGroupSizeCluster(find(isNeighbourToBiggerClusterGroup == 1))=[];
 %     numOfSmallClusters = length(smallGroupSizeCluster);
     
-    end
+   % end
     clusters = clusters(~cellfun('isempty',clusters));   
 end

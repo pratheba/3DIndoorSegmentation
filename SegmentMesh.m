@@ -5,5 +5,6 @@ function [] = SegmentMesh
     addpath('gaimc');
     
     SetGlobalClusterGroupSize(40);
+    SetGlobalValues('minDistance',2);
     loadandreadmesh(filename);
 end

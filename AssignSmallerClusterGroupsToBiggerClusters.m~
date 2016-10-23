@@ -2,20 +2,21 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
     numOfSmallClusters = length(smallGroupSizeCluster);
     faceNormals = GetGlobalValues('faceNormals');
 
+    clusterNumberForNeighbouringFaces = [];
+   
     mindistance = GetGlobalValues('minDistance');
     isNeighbourToBiggerClusterGroup = zeros(numOfSmallClusters,1);
     
     loopcount = 0;
-    while(1)
-        if((loopcount > 10) || (isempty(find(isNeighbourToBiggerClusterGroup == 0,1))))
-            break;
-        end
-        loopcount = loopcount + 1;
+%     while(1)
+%         if((loopcount > 10) || (isempty(find(isNeighbourToBiggerClusterGroup == 0,1))))
+%             break;
+%         end
+%         loopcount = loopcount + 1;
     %% Get the small group clusters whose neighbour belongs to a larger group and continue from then on
     for s_index = 1: numOfSmallClusters % For each small Cluster
         finalClusterNumber = [];
         finalFaceNormal = [];
-        
         if(isNeighbourToBiggerClusterGroup(s_index))
             continue;
         end
@@ -57,9 +58,10 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
             finalClusterNumber = cell2mat(finalClusterNumber);
             finalFaceNormal = cell2mat(finalFaceNormal);
 
-            angleDiff = 360;
+            angleDiff = 10;
             whichClusterNumber = smallGroupSizeCluster(s_index);
            
+            
             curr_AvgfacenormalOfSmallCluster = faceNormals(currSmallGroupFaceNumbers(1),:);
             if(length(currSmallGroupFaceNumbers)>1)
                 r = randperm(length(currSmallGroupFaceNumbers),1);
@@ -72,21 +74,21 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
                 ffacenormal = finalFaceNormal(f,:);
                 currangleDiff = atan2d(norm(cross(curr_AvgfacenormalOfSmallCluster,ffacenormal)),dot(curr_AvgfacenormalOfSmallCluster,ffacenormal));
 
-%                 randnum = randperm(length(clusters{finalClusterNumber(f)}),10);
-%                 %meancentroidOfcurrSmallGroup = mean(centroid(currSmallGroupFaceNumbers,:));
-%                 avgdistance = [];
-%                 currSmallGroupcentroid = centroid(currSmallGroupFaceNumbers(randperm(length(currSmallGroupFaceNumbers),1)),:);
-%                 %for len = 1: length(currSmallGroupFaceNumbers)
-%                 for r = 1:10 
-%                    % distancecentroid = norm(centroid(currSmallGroupFaceNumbers(len),:) - centroid(clusters{finalClusterNumber(f)}(randnum(r)),:));
-%                    distancecentroid = norm(currSmallGroupcentroid - centroid(clusters{finalClusterNumber(f)}(randnum(r)),:));
-%                    % disp(distancecentroid);
-%                    avgdistance = [avgdistance; distancecentroid];
-%                 end
-%                 avgdistance = mean(avgdistance);
+                randnum = randperm(length(clusters{finalClusterNumber(f)}),10);
+                %meancentroidOfcurrSmallGroup = mean(centroid(currSmallGroupFaceNumbers,:));
+                avgdistance = [];
+                currSmallGroupcentroid = centroid(currSmallGroupFaceNumbers(randperm(length(currSmallGroupFaceNumbers),1)),:);
+                %for len = 1: length(currSmallGroupFaceNumbers)
+                for r = 1:10 
+                   % distancecentroid = norm(centroid(currSmallGroupFaceNumbers(len),:) - centroid(clusters{finalClusterNumber(f)}(randnum(r)),:));
+                   distancecentroid = norm(currSmallGroupcentroid - centroid(clusters{finalClusterNumber(f)}(randnum(r)),:));
+                   % disp(distancecentroid);
+                   avgdistance = [avgdistance; distancecentroid];
+                end
+                avgdistance = mean(avgdistance);
                % end
 
-                if((currangleDiff < angleDiff))% & (avgdistance <= mindistance))%&(~(ismember(finalClusterNumber{f},smallGroupSizeCluster))))%&(distance <= mindistance))
+                if((currangleDiff < angleDiff) & (avgdistance <= mindistance))%&(~(ismember(finalClusterNumber{f},smallGroupSizeCluster))))%&(distance <= mindistance))
                     angleDiff = currangleDiff;
                     whichClusterNumber = finalClusterNumber(f);
                     isNeighbourToBiggerClusterGroup(s_index) = 1;
@@ -121,6 +123,6 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
 %     smallGroupSizeCluster(find(isNeighbourToBiggerClusterGroup == 1))=[];
 %     numOfSmallClusters = length(smallGroupSizeCluster);
     
-    end
+   % end
     clusters = clusters(~cellfun('isempty',clusters));   
 end

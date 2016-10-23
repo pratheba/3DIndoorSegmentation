@@ -1,6 +1,8 @@
 function [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals(faces, adjacencyListForFaces, currentfaceindex, curr_facenormal, isVisitedFace,faceNormals,centroid, clusterFaces)
     
     smoothnessThresholdinDegree = 10;
+    shouldTakeAverage = GetShouldTakeAverageNormal();
+    minDistance = GetGlobalValues('minDistance');
 
     if(~isVisitedFace(currentfaceindex))
         isVisitedFace(currentfaceindex) = 1;
@@ -11,9 +13,11 @@ function [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals
                 neigh_facenormal = faceNormals(neighbourFaces(i),:);
              
                 angle1 = atan2d(norm(cross(curr_facenormal,neigh_facenormal)),dot(curr_facenormal,neigh_facenormal));
-                if(angle1 <= 5)
+                distance = norm(centroid(currentfaceindex) - centroid(neighbourFaces(i)));
+                disp(distance);
+                if(dot(curr_facenormal,neigh_facenormal)>= 0 && (angle1 <= 5) )%&& distance <= minDistance) %% check if anti parallel
                     clusterFaces = [ clusterFaces; neighbourFaces(i)];
-                     if(GetShouldTakeAverageNormal)
+                     if(shouldTakeAverage)
                         curr_facenormal = mean(faceNormals(clusterFaces,:));
                      end
 
@@ -21,7 +25,7 @@ function [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals
                  else
 %                     % check for convextiy
                      isFacesConvexilyConnected = CheckIfConvexConnected(centroid(currentfaceindex,:), centroid(neighbourFaces(i),:), curr_facenormal, neigh_facenormal);
-                     if(isFacesConvexilyConnected)
+                     if(isFacesConvexilyConnected)%&& distance <= minDistance)
                          clusterFaces = [ clusterFaces; neighbourFaces(i)];
                          curr_facenormal = neigh_facenormal;
                          [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals(faces, adjacencyListForFaces, neighbourFaces(i), curr_facenormal, isVisitedFace, faceNormals, centroid,clusterFaces);

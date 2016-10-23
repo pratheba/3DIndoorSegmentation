@@ -8,5 +8,8 @@ function [] = SetGlobalValues(field, value)
     elseif(strcmpi(field,'clusterGroupSize'))
         global clusterGroupSize;
         clusterGroupSize = value;
+    elseif(strcmpi(field,'minDistance'))
+        global minDistance;
+        minDistance = value;
     end
 end
