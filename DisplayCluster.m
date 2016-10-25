@@ -9,11 +9,11 @@ function [colorInformation] =  DisplayCluster(clusterfaces, vertices,clusterFace
     TR = triangulation(clusterfaces,vertices);
     h = trisurf(TR, 'FaceColor', c);
     axis equal;
-    hold on;
-    incenterofTriangles = incenter(TR);
-	%quiver3(vertex(:,1), vertex(:,2), vertex(:,3), vertexnormals(:,1), vertexnormals(:,2), vertexnormals(:,3), 0.7, 'color', 'r');
-	quiver3(incenterofTriangles(:,1), incenterofTriangles(:,2), incenterofTriangles(:,3), faceNormals(clusterFaceIndex,1), faceNormals(clusterFaceIndex,2), faceNormals(clusterFaceIndex,3), 0.8, 'color', 'g');
-	%hold off
+%     hold on;
+%     incenterofTriangles = incenter(TR);
+% 	%quiver3(vertex(:,1), vertex(:,2), vertex(:,3), vertexnormals(:,1), vertexnormals(:,2), vertexnormals(:,3), 0.7, 'color', 'r');
+% 	quiver3(incenterofTriangles(:,1), incenterofTriangles(:,2), incenterofTriangles(:,3), faceNormals(clusterFaceIndex,1), faceNormals(clusterFaceIndex,2), faceNormals(clusterFaceIndex,3), 0.8, 'color', 'g');
+% 	%hold off
     
 	%displayNormals(TR, vertices, vertexNormals, incenterofTriangles, faceNormals(clusterFaceIndex,:));
 %     hold on;

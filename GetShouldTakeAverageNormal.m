@@ -1,4 +1,4 @@
 function shouldTakeAverageNormal = GetShouldTakeAverageNormal()
     % Set true or false
-    shouldTakeAverageNormal = 1;
+    shouldTakeAverageNormal = 0;
 end
