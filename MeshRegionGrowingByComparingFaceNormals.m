@@ -10,19 +10,21 @@ function [clusterFaces, isVisitedFace] = MeshRegionGrowingByComparingFaceNormals
 
         for i=1:length(neighbourFaces)
              curr_facenormal = curr_facenormal/norm(curr_facenormal);
-             disp(curr_facenormal);
+%              disp(curr_facenormal);
 
             if(~isVisitedFace(neighbourFaces(i)))
                 
                 
                 neigh_facenormal = faceNormals(neighbourFaces(i),:);
                 neigh_facenormal = neigh_facenormal /norm(neigh_facenormal);
-                disp(neigh_facenormal);
-                
+%                 disp(neigh_facenormal);
+                if(~isequal(size(curr_facenormal),size(neigh_facenormal)))
+                    curr_facenormal = curr_facenormal';
+                end
                 angle1 = atan2d(norm(cross(curr_facenormal,neigh_facenormal)),dot(curr_facenormal,neigh_facenormal));
                 distance = norm(centroid(currentfaceindex) - centroid(neighbourFaces(i)));
-                disp(distance);
-                disp(angle1);
+%                 disp(distance);
+%                 disp(angle1);
               
                 if((dot(curr_facenormal,neigh_facenormal)>= 0 )&(angle1 <= 10))% & (distance <= minDistance)) %% check if anti parallel
                     clusterFaces = [ clusterFaces; neighbourFaces(i)];
