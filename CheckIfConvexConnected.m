@@ -2,25 +2,15 @@ function isConvexConnected = CheckIfConvexConnected(curr_centroid, neigh_centroi
 
         epsilon = 0.001;
         
-        vectorFromCurrentToNeigh = neigh_centroid - curr_centroid;
-        vectorFromCurrentToNeigh = vectorFromCurrentToNeigh/norm(vectorFromCurrentToNeigh);
+        [angleInRad, angleInDeg] = FindDifferenceInAngleBetweenCentroidFaceNormals(curr_centroid, neigh_centroid, curr_facenormal, neigh_facenormal);
         
-        curr_facenormal = curr_facenormal/norm(curr_facenormal);
-        neigh_facenormal = neigh_facenormal /norm(neigh_facenormal);
-        vectorFromCurrentToNeigh = vectorFromCurrentToNeigh/norm(vectorFromCurrentToNeigh);
+%         if((angleInRad >= 0) && (dot(curr_facenormal,neigh_facenormal)>=0))
+%             isConvexConnected = 1;
+%         else
+%             isConvexConnected = 0;
+%         end
         
-        angleFromCurrToDiff = acos(dot(curr_facenormal,vectorFromCurrentToNeigh));
-        angleFromNeighToDiff = acos(dot(neigh_facenormal,vectorFromCurrentToNeigh));
-        
-        angleFromCurrToDiffDeg = acosd(dot(curr_facenormal,vectorFromCurrentToNeigh));
-        angleFromNeighToDiffDeg = acosd(dot(neigh_facenormal,vectorFromCurrentToNeigh));
-        
-        angleDiff = ((angleFromCurrToDiff) - (angleFromNeighToDiff));
-        angleDiffDeg = ((angleFromCurrToDiffDeg) - (angleFromNeighToDiffDeg));
-        
-%         disp(angleDiffDeg);
-        
-        if((angleDiff >= 0) && (dot(neigh_facenormal,vectorFromCurrentToNeigh)>0))
+        if((angleInDeg >= 0) && (dot(curr_facenormal,neigh_facenormal)>=0))
             isConvexConnected = 1;
         else
             isConvexConnected = 0;

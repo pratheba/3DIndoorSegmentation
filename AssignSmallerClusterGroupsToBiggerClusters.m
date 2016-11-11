@@ -24,9 +24,7 @@ function [clusters,mapFaceToCluster] = AssignSmallerClusterGroupsToBiggerCluster
 
         for fs_index = 1: length(currSmallGroupFaceNumbers) % For each face in a single cluster
             currfaceNumber = currSmallGroupFaceNumbers(fs_index);
-            if(currfaceNumber == 6033)
-                disp('now');
-            end
+
             neighbourFaces = adjacencyListForFaces{currfaceNumber}; % Get the neighbouring faces
             
             tempNeighfaces = [];

@@ -1,5 +1,6 @@
 
 function []= loadandreadmesh(filename)
     [vertex, faces] = read_mesh(filename);
-    startProcess(vertex, faces);
+    outputFileName = strcat('outputMesh/',filename,'-result.ply');
+    startProcess(vertex, faces,outputFileName);
 end

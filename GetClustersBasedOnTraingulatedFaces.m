@@ -11,7 +11,7 @@ function [clusters, colorInformationValue] = GetClustersBasedOnTraingulatedFaces
     isVisitedFaces = zeros(numFaces,1);
     clusterNumber = 0;
 
-    clusters = cell(numFaces,numFaces);
+    clusters = cell(numFaces,1);
     colorInformationValue = zeros(numFaces,3);
     smallGroupSizeCluster = [];
     mapFaceToCluster = zeros(numFaces,1);

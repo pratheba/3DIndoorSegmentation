@@ -4,8 +4,8 @@ function smallGroupSizeCluster = CheckIfToSmallerOrLargerClusterGroup(clusterFac
     faceNormals = GetGlobalValues('faceNormals');
          
     if(length(clusterFaces) <= GetGlobalClusterGroupSize())
-        disp('cluster group size is small');
-        disp(length(clusterFaces));
+        %disp('cluster group size is small');
+        %disp(length(clusterFaces));
 
         % % Combine the clusters with the neighbouring faces
         %% Store these values seperately
@@ -14,8 +14,7 @@ function smallGroupSizeCluster = CheckIfToSmallerOrLargerClusterGroup(clusterFac
         smallGroupSizeCluster = [smallGroupSizeCluster; clusterNumber];
         DisplayCluster(faces(clusterFaces,:), vertices,clusterFaces,vertexNormals, faceNormals,1); 
     else
-         
-         DisplayCluster(faces(clusterFaces,:), vertices,clusterFaces,vertexNormals, faceNormals,0); 
+        DisplayCluster(faces(clusterFaces,:), vertices,clusterFaces,vertexNormals, faceNormals,0); 
     end
 
 end
